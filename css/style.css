@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-body{
+
+body {
     font-family: 'Questrial', sans-serif;
 }
 
@@ -13,15 +14,17 @@ header {
     width: 100%;
     background-color: #fff;
 }
+
 aside {
     min-height: 100vh;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
     background-color: #C2185B;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #C2185B;
     border-color: #C2185B;
 }
@@ -30,21 +33,38 @@ main.login {
     width: 400px;
 }
 
-section.full{
+section.full {
     width: 100%;
     min-height: 80vh;
     padding: 50px 0;
 }
 
 article.evento {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    height: 350px;
     width: 350px;
 }
 
-footer nav ul{
+article h4 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+article p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+footer nav ul {
     list-style: none;
     display: flex;
 }
 
-footer nav ul li  {
+footer nav ul li {
     padding: 10px;
 }
