@@ -12,7 +12,7 @@ let btnExcluir = document.querySelector("#btnExcluir");
 
 
 
-async function getEvento(ID) {
+async function getEvento() {
 
     try {
         const resposta = await fetch(URL_EVENT_ID + ID);

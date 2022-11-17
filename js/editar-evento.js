@@ -8,14 +8,17 @@ let inputAtracoes = document.querySelector("#atracoes");
 let inputDescricao = document.querySelector("#descricao");
 let inputData = document.querySelector("#data");
 let inputLotacao = document.querySelector("#lotacao");
-let btnExcluir = document.querySelector("#btnExcluir");
+let editarForm = document.querySelector("form");
 
 
 
-async function getEvento(ID) {
+async function getEvento() {
 
     try {
         const resposta = await fetch(URL_EVENT_ID + ID);
+        if (!resposta.ok) {
+            throw new Error("Não encontrou o link")
+        }
 
         const dadosEvento = await resposta.json();
 
@@ -25,11 +28,45 @@ async function getEvento(ID) {
         inputDescricao.value = dadosEvento.description;
         inputData.value = new Date(dadosEvento.scheduled).toLocaleString('pt-BR', { timeZone: "America/Sao_Paulo", dateStyle: "short", timeStyle: "short" });
         inputLotacao.value = dadosEvento.number_tickets;
-    } catch(error) {
-        console.log("Erro ao encontrar link");
+    } catch (error) {
+        console.log(error);
     }
 
 }
 
 getEvento(ID);
+
+
+editarForm.addEventListener("submit", (ev) => {
+
+    ev.preventDefault();
+
+    let eventoEditado = {};
+
+    eventoEditado.name = inputNome.value;
+    eventoEditado.poster = inputBanner.value;
+    eventoEditado.attractions = inputAtracoes.value.split(",");
+    eventoEditado.description = inputAtracoes.value;
+    eventoEditado.scheduled = new Date(inputData.value);
+    eventoEditado.number_tickets = inputLotacao.value;
+
+
+    fetch(URL_EVENT_ID + ID, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(eventoEditado),
+    })
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+        let hrefAntes = location.href;
+
+        if (hrefAntes.includes("Leonardo")) {
+            location.href = `${location.origin}/desafio-2/admin.html`
+        } else {
+            location.href = `${location.origin}/admin.html`;
+        }
+
+});
 
