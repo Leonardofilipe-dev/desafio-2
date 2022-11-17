@@ -13,9 +13,10 @@ let cadastroForm = document.querySelector("form");
 
 
 
-cadastroForm.addEventListener("submit", (ev) => {
+cadastroForm.addEventListener("submit", async (ev) => {
 
     ev.preventDefault();
+
 
     let eventoCriado = {};
 
@@ -27,24 +28,22 @@ cadastroForm.addEventListener("submit", (ev) => {
     eventoCriado.number_tickets = inputLotacao.value;
 
 
-    fetch(URL_CADASTRO , {
+    const resposta = await fetch(URL_CADASTRO , {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(eventoCriado),
     })
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        if(resposta.status !== 201){
+            return alert('Deu errados')
+        }
 
-        // let hrefAntes = location.href;
+        let host = location.host;
 
-        // if (hrefAntes.includes("Leonardo")) {
-        //     location.href = `${location.origin}/desafio-2/admin.html`
-        // } else {
-        //     location.href = `${location.origin}/admin.html`;
-        // }
-
-    location.replace("/admin.html");
+        if (host.includes("leonardofilipe-dev.github.io")) {
+            location.replace("/desafio-2/admin.html");
+        } else {
+            location.replace("/admin.html");
+        }
 
 });
 
