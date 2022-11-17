@@ -43,13 +43,9 @@ btnExcluir.addEventListener('click', function deletaEvento(ev) {
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 
-    let hrefAntes = location.href;
+        console.log(deletaEvento);
 
-    if (hrefAntes.includes("Leonardo")) {
-        location.href = `${location.origin}/desafio-2/admin.html`
-    } else {
-        location.href = `${location.origin}/admin.html`;
-    }
+    location.replace("/admin.html");
 
 });
 

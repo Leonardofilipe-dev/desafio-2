@@ -60,13 +60,8 @@ editarForm.addEventListener("submit", (ev) => {
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 
-        let hrefAntes = location.href;
+        location.replace("/admin.html");
 
-        if (hrefAntes.includes("Leonardo")) {
-            location.href = `${location.origin}/desafio-2/admin.html`
-        } else {
-            location.href = `${location.origin}/admin.html`;
-        }
 
 });
 
