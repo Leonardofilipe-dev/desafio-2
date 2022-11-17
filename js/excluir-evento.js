@@ -1,31 +1,48 @@
-const url_atual = window.location.search;
-const parametros = new URLSearchParams(url_atual);
-const id = parametros.get("id");
-const inputNome = document.querySelector("#nome");
-const inputBanner = document.querySelector("#banner");
-const inputAtracoes = document.querySelector("#atracoes");
-const inputDescricao = document.querySelector("#descricao");
-const inputData = document.querySelector("#data");
-const inputLotacao = document.querySelector("#lotacao");
+const URL_EVENT_ID = "https://xp41-soundgarden-api.herokuapp.com/events/";
+const URL_ATUAL = window.location.search;
+let parametros = new URLSearchParams(URL_ATUAL);
+const ID = parametros.get("id");
+let inputNome = document.querySelector("#nome");
+let inputBanner = document.querySelector("#banner");
+let inputAtracoes = document.querySelector("#atracoes");
+let inputDescricao = document.querySelector("#descricao");
+let inputData = document.querySelector("#data");
+let inputLotacao = document.querySelector("#lotacao");
+let btnExcluir = document.querySelector("#btnExcluir");
 
 
-async function getEvento(id) {
-    const resposta = await fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${id}`);
 
-    const dadosEvento = await resposta.json();
+async function getEvento(ID) {
 
-    inputNome.value = dadosEvento.name;
-    inputBanner.value = dadosEvento.poster;
-    inputAtracoes.value = dadosEvento.attractions;
-    inputDescricao.value = dadosEvento.description;
-    inputData.value = new Date(dadosEvento.scheduled).toLocaleString('pt-BR', { timeZone: "America/Sao_Paulo", dateStyle: "short", timeStyle: "short" });
-    inputLotacao.value = dadosEvento.number_tickets;
+    try {
+        const resposta = await fetch(URL_EVENT_ID + ID);
 
+        const dadosEvento = await resposta.json();
 
-    console.log(dadosEvento);
+        inputNome.value = dadosEvento.name;
+        inputBanner.value = dadosEvento.poster;
+        inputAtracoes.value = dadosEvento.attractions;
+        inputDescricao.value = dadosEvento.description;
+        inputData.value = new Date(dadosEvento.scheduled).toLocaleString('pt-BR', { timeZone: "America/Sao_Paulo", dateStyle: "short", timeStyle: "short" });
+        inputLotacao.value = dadosEvento.number_tickets;
+    } catch(error) {
+        console.log("Erro ao encontrar link");
+    }
+
 }
 
+btnExcluir.addEventListener('click', function deletaEvento(ID) {
+    fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${ID}`, {
+        method: 'DELETE'
+    })
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+});
 
 
 
-getEvento(id);
+
+
+
+getEvento(ID);
