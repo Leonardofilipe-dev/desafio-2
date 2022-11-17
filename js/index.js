@@ -61,6 +61,8 @@ form.onsubmit = (ev) => {
 
     criarReservaNaApi(novaReserva);
 
+    console.log(novaReserva);
+
 }
 
 
@@ -81,6 +83,15 @@ function criarReservaNaApi(novaReserva){
         // )
     }).then(resposta => resposta.json())
     .then(resultado => console.log(resultado))
+    .catch(error => console.log(error));
+
+    let hrefAntes = location.href;
+
+    if (hrefAntes.includes("Leonardo")) {
+        location.href = `${location.origin}/desafio-2/index.html`
+    } else {
+        location.href = `${location.origin}/index.html`;
+    }
 }
 
 
