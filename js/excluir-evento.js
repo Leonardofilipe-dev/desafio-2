@@ -25,19 +25,32 @@ async function getEvento(ID) {
         inputDescricao.value = dadosEvento.description;
         inputData.value = new Date(dadosEvento.scheduled).toLocaleString('pt-BR', { timeZone: "America/Sao_Paulo", dateStyle: "short", timeStyle: "short" });
         inputLotacao.value = dadosEvento.number_tickets;
-    } catch(error) {
+    } catch (error) {
         console.log("Erro ao encontrar link");
     }
 
 }
 
-btnExcluir.addEventListener('click', function deletaEvento(ID) {
+btnExcluir.addEventListener('click', function deletaEvento(ev) {
+
+    ev.preventDefault();
+    console.log(ID.target);
+
     fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${ID}`, {
         method: 'DELETE'
     })
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
+
+    let hrefAntes = location.href;
+
+    if (hrefAntes.includes("Leonardo")) {
+        location.href = `${location.origin}/desafio-2/admin.html`
+    } else {
+        location.href = `${location.origin}/admin.html`;
+    }
+
 });
 
 
