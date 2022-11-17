@@ -8,8 +8,6 @@ let inputAtracoes = document.querySelector("#atracoes");
 let inputDescricao = document.querySelector("#descricao");
 let inputData = document.querySelector("#data");
 let inputLotacao = document.querySelector("#lotacao");
-let btnExcluir = document.querySelector("#btnExcluir");
-
 
 
 async function getEvento(ID) {
@@ -31,14 +29,19 @@ async function getEvento(ID) {
 
 }
 
-btnExcluir.addEventListener('click', function deletaEvento(ID) {
-    fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${ID}`, {
-        method: 'DELETE'
-    })
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-});
+btnExcluir.addEventListener('click', function excluiEvent(URL_EVENT_ID, ID){
+    let requestOptions = {
+        method: "DELETE",
+        redirect: "follow",
+    };
+
+    let endpoint = URL_EVENT_ID + ID;
+    fetch(endpoint, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+    });
 
 
 
