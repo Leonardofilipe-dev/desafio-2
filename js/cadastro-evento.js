@@ -33,21 +33,18 @@ cadastroForm.addEventListener("submit", (ev) => {
         body: JSON.stringify(eventoCriado),
     })
         .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-        if(resposta.status !== 201){
-            return alert('Deu errados')
-        }
-
-        let host = location.host;
+        .then(result => {
+            console.log(result)
+            let host = location.host;
 
         if (host.includes("leonardofilipe-dev.github.io")) {
             location.replace("/desafio-2/admin.html");
         } else {
             location.replace("/admin.html");
         }
-    location.replace("/admin.html");
+        })
+        .catch(error => console.log('error', error));
+
 
 });
 

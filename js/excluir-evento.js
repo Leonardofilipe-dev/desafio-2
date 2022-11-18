@@ -43,7 +43,6 @@ btnExcluir.addEventListener('click', function deletaEvento(ev) {
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 
-        console.log(deletaEvento);
 
         // let host = location.host;
 
