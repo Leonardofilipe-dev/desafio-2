@@ -32,7 +32,7 @@ consumo de API.</p>
 
 **Erika Azevedo**
 
-Linkedin: 
+Linkedin: https://www.linkedin.com/in/erika-azevedo-diniz-2b3099111
 
 Github: https://github.com/erikadiniz85
 
@@ -40,7 +40,7 @@ Github: https://github.com/erikadiniz85
 
 **Layones Soares**
 
-Linkedin: 
+Linkedin: https://www.linkedin.com/in/layones-soares-007738219?originalSubdomain=br
 
 Github: 
 
@@ -48,7 +48,7 @@ Github:
 
 **Leonardo Filipe**
 
-Linkedin: 
+Linkedin: https://www.linkedin.com/in/leonardo-filipe-36b589223
 
 Github: https://github.com/Leonardofilipe-dev
 
