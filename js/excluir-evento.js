@@ -45,7 +45,13 @@ btnExcluir.addEventListener('click', function deletaEvento(ev) {
 
         console.log(deletaEvento);
 
-    location.replace("/admin.html");
+        // let host = location.host;
+
+        // if (host.includes("leonardofilipe-dev.github.io") == true) {
+        //     location.replace("/desafio-2/admin.html");
+        // } else {
+        //     location.replace("/admin.html");
+        // }
 
 });
 
