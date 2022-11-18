@@ -63,7 +63,15 @@ function criarReservaNaApi(novaReserva){
         //     }
         // )
     }).then(resposta => resposta.json())
-    .then(resultado => console.log(resultado))
+    .then(resultado => {
+        console.log(result)
+        let host = location.host;
+
+        if (host.includes("leonardofilipe-dev.github.io")) {
+            location.replace("/desafio-2/admin.html");
+        } else {
+            location.replace("/admin.html");
+        }})
     .catch(error => console.log(error));
 
     let hrefAntes = location.href;
