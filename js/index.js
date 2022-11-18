@@ -90,7 +90,7 @@ function criarReservaNaApi(novaReserva){
         if (host.includes("leonardofilipe-dev.github.io")) {
             location.replace("/desafio-2/admin.html");
         } else {
-            location.replace("/admin.html");
+            location.replace("/index.html");
         }})
     .catch(error => console.log(error));
 
