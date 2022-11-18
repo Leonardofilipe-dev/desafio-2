@@ -83,7 +83,8 @@ function criarReservaNaApi(novaReserva){
         // )
     }).then(resposta => resposta.json())
     .then(resultado => {
-        console.log(resultado)
+        console.log(resultado);
+
         let host = location.host;
 
         if (host.includes("leonardofilipe-dev.github.io")) {
@@ -93,13 +94,6 @@ function criarReservaNaApi(novaReserva){
         }})
     .catch(error => console.log(error));
 
-    let hrefAntes = location.href;
-
-    if (hrefAntes.includes("Leonardo")) {
-        location.href = `${location.origin}/desafio-2/index.html`
-    } else {
-        location.href = `${location.origin}/index.html`;
-    }
 }
 
 

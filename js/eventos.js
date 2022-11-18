@@ -74,13 +74,7 @@ function criarReservaNaApi(novaReserva){
         }})
     .catch(error => console.log(error));
 
-    let hrefAntes = location.href;
 
-    if (hrefAntes.includes("Leonardo")) {
-        location.href = `${location.origin}/desafio-2/index.html`
-    } else {
-        location.href = `${location.origin}/index.html`;
-    }
 }
 
 getEventos();
