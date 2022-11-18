@@ -83,7 +83,7 @@ function criarReservaNaApi(novaReserva){
         // )
     }).then(resposta => resposta.json())
     .then(resultado => {
-        console.log(result)
+        console.log(resultado)
         let host = location.host;
 
         if (host.includes("leonardofilipe-dev.github.io")) {
