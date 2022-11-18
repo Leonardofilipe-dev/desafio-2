@@ -47,7 +47,7 @@ cadastroForm.addEventListener("submit", (ev) => {
         } else {
             location.replace("/admin.html");
         }
-
+    location.replace("/admin.html");
 
 });
 
