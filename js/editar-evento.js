@@ -36,10 +36,16 @@ async function getEvento() {
 
 getEvento(ID);
 
+function formataData (d){
+    let array = d.split(" ");
+    let novadata = array[0].split("/");
+    return `${novadata[2]}-${novadata[1]}-${novadata[0]}T${array[1]}`;
+}
 
 editarForm.addEventListener("submit", (ev) => {
 
     ev.preventDefault();
+
 
     let eventoEditado = {};
 
@@ -47,9 +53,10 @@ editarForm.addEventListener("submit", (ev) => {
     eventoEditado.poster = inputBanner.value;
     eventoEditado.attractions = inputAtracoes.value.split(",");
     eventoEditado.description = inputAtracoes.value;
-    eventoEditado.scheduled = new Date(inputData.value);
+    eventoEditado.scheduled = formataData(inputData.value);
     eventoEditado.number_tickets = inputLotacao.value;
 
+    console.log(eventoEditado);
 
     fetch(URL_EVENT_ID + ID, {
         method: "PUT",
@@ -57,10 +64,17 @@ editarForm.addEventListener("submit", (ev) => {
         body: JSON.stringify(eventoEditado),
     })
         .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then(result => {
+            console.log(result)
+            let host = location.host;
 
-        location.replace("/admin.html");
+            if (host.includes("leonardofilipe-dev.github.io")) {
+                location.replace("/desafio-2/admin.html");
+            } else {
+                location.replace("/admin.html");
+            }
+        })
+        .catch(error => console.log('error', error));
 
 
 });

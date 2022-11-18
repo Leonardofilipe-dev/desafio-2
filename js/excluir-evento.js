@@ -40,17 +40,18 @@ btnExcluir.addEventListener('click', function deletaEvento(ev) {
         method: 'DELETE'
     })
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => {
+            console.log(result)
+            let host = location.host;
+
+            if (host.includes("leonardofilipe-dev.github.io")) {
+                location.replace("/desafio-2/admin.html");
+            } else {
+                location.replace("/admin.html");
+            }
+        })
         .catch(error => console.log('error', error));
 
-
-        // let host = location.host;
-
-        // if (host.includes("leonardofilipe-dev.github.io") == true) {
-        //     location.replace("/desafio-2/admin.html");
-        // } else {
-        //     location.replace("/admin.html");
-        // }
 
 });
 
